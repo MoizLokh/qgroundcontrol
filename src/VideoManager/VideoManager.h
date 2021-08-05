@@ -89,7 +89,10 @@ public:
 // FIXME: AV: they should be removed after finishing multiple video stream support
 // new arcitecture does not assume direct access to video receiver from QML side, even if it works for now
     virtual VideoReceiver*  videoReceiver           () { return _videoReceiver[0]; }
-    virtual VideoReceiver*  thermalVideoReceiver    () { return _videoReceiver[1]; }
+    virtual VideoReceiver*  videoReceiver2           () { return _videoReceiver[1]; }
+    virtual VideoReceiver*  videoReceiver3           () { return _videoReceiver[2]; }
+    virtual VideoReceiver*  videoReceiver4           () { return _videoReceiver[3]; }
+    virtual VideoReceiver*  thermalVideoReceiver    () { return _videoReceiver[4]; }
 
 #if defined(QGC_DISABLE_UVC)
     virtual bool        uvcEnabled          () { return false; }
@@ -155,20 +158,21 @@ protected:
     QString                 _imageFile;
     SubtitleWriter          _subtitleWriter;
     bool                    _isTaisync              = false;
-    VideoReceiver*          _videoReceiver[2]       = { nullptr, nullptr };
-    void*                   _videoSink[2]           = { nullptr, nullptr };
-    QString                 _videoUri[2];
+    VideoReceiver*          _videoReceiver[5]       = { nullptr, nullptr, nullptr , nullptr , nullptr};
+    void*                   _videoSink[5]           = { nullptr, nullptr, nullptr, nullptr, nullptr };
+    QString                 _videoUri[5];
     // FIXME: AV: _videoStarted seems to be access from 3 different threads, from time to time
     // 1) Video Receiver thread
     // 2) Video Manager/main app thread
     // 3) Qt rendering thread (during video sink creation process which should happen in this thread)
     // It works for now but...
-    bool                    _videoStarted[2]        = { false, false };
-    bool                    _lowLatencyStreaming[2] = { false, false };
-    QAtomicInteger<bool>    _streaming              = false;
-    QAtomicInteger<bool>    _decoding               = false;
-    QAtomicInteger<bool>    _recording              = false;
-    QAtomicInteger<quint32> _videoSize              = 0;
+    bool                    _videoStarted[5]        = { false, false, false, false, false };
+    bool                    _lowLatencyStreaming[5] = { false, false, false, false, false };
+    /* added 3 more entries to the array*/
+    QAtomicInteger<bool>    _streaming[4]              = { false, false, false, false};
+    QAtomicInteger<bool>    _decoding[4]               = { false, false, false, false};
+    QAtomicInteger<bool>    _recording[4]              = { false, false, false, false};
+    QAtomicInteger<quint32> _videoSize[4]              = {0, 0, 0, 0};
     VideoSettings*          _videoSettings          = nullptr;
     QString                 _videoSourceID;
     bool                    _fullScreen             = false;
