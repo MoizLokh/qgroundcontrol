@@ -155,7 +155,7 @@ protected:
 
 protected:
     QString                 _videoFile;
-    QString                 _imageFile;
+    QString                 _imageFile[4];         //made _imageFile an array
     SubtitleWriter          _subtitleWriter;
     bool                    _isTaisync              = false;
     VideoReceiver*          _videoReceiver[5]       = { nullptr, nullptr, nullptr , nullptr , nullptr};
