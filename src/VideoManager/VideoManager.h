@@ -77,6 +77,23 @@ public:
         return _decoding;
     }
 
+//added more functions to access separate decoding values for all videos
+    bool decoding1(void) {
+        return _decoding[0];
+    }
+
+    bool decoding2(void) {
+        return _decoding[1];
+    }
+
+    bool decoding3(void) {
+        return _decoding[2];
+    }
+
+    bool decoding4(void) {
+        return _decoding[3];
+    }
+
     bool recording(void) {
         return _recording;
     }

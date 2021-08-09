@@ -39,18 +39,62 @@ Item {
     property double _thermalHeightFactor: 0.85 //-- TODO
 
     Rectangle {
-        id:             noVideo
+        id:             noVideo1
         anchors.fill:   parent
         color:          Qt.rgba(0,0,0,0.75)
-        visible:        !(QGroundControl.videoManager.decoding)
+        visible:        !(QGroundControl.videoManager.decoding1)
         QGCLabel {
-            text:               QGroundControl.settingsManager.videoSettings.streamEnabled.rawValue ? qsTr("WAITING FOR VIDEO") : qsTr("VIDEO DISABLED")
+            text:               QGroundControl.settingsManager.videoSettings.streamEnabled.rawValue ? qsTr("WAITING FOR VIDEO 1") : qsTr("VIDEO DISABLED")
             font.family:        ScreenTools.demiboldFontFamily
             color:              "white"
             font.pointSize:     useSmallFont ? ScreenTools.smallFontPointSize : ScreenTools.largeFontPointSize
             anchors.centerIn:   parent
         }
     }
+
+    Rectangle {
+        id:             noVideo2
+        anchors.fill:   parent
+        color:          Qt.rgba(0,0,0,0.75)
+        visible:        !(QGroundControl.videoManager.decoding2)
+        QGCLabel {
+            text:               QGroundControl.settingsManager.videoSettings.streamEnabled.rawValue ? qsTr("WAITING FOR VIDEO 2") : qsTr("VIDEO DISABLED")
+            font.family:        ScreenTools.demiboldFontFamily
+            color:              "white"
+            font.pointSize:     useSmallFont ? ScreenTools.smallFontPointSize : ScreenTools.largeFontPointSize
+            anchors.centerIn:   parent
+        }
+    }
+
+    Rectangle {
+        id:             noVideo3
+        anchors.fill:   parent
+        color:          Qt.rgba(0,0,0,0.75)
+        visible:        !(QGroundControl.videoManager.decoding3)
+        QGCLabel {
+            text:               QGroundControl.settingsManager.videoSettings.streamEnabled.rawValue ? qsTr("WAITING FOR VIDEO 3") : qsTr("VIDEO DISABLED")
+            font.family:        ScreenTools.demiboldFontFamily
+            color:              "white"
+            font.pointSize:     useSmallFont ? ScreenTools.smallFontPointSize : ScreenTools.largeFontPointSize
+            anchors.centerIn:   parent
+        }
+    }
+
+    Rectangle {
+        id:             noVideo4
+        anchors.fill:   parent
+        color:          Qt.rgba(0,0,0,0.75)
+        visible:        !(QGroundControl.videoManager.decoding4)
+        QGCLabel {
+            text:               QGroundControl.settingsManager.videoSettings.streamEnabled.rawValue ? qsTr("WAITING FOR VIDEO 4") : qsTr("VIDEO DISABLED")
+            font.family:        ScreenTools.demiboldFontFamily
+            color:              "white"
+            font.pointSize:     useSmallFont ? ScreenTools.smallFontPointSize : ScreenTools.largeFontPointSize
+            anchors.centerIn:   parent
+        }
+    }
+
+
     Rectangle {
         anchors.fill:   parent
         color:          "black"
@@ -75,15 +119,156 @@ Item {
             id: videoBackgroundComponent
             QGCVideoBackground {
                 id:             videoContent
-                objectName:     "videoContent"
+                objectName:     "videoContent1"
 
                 Connections {
                     target: QGroundControl.videoManager
                     onImageFileChanged: {
                         videoContent.grabToImage(function(result) {
-                            if (!result.saveToFile(QGroundControl.videoManager.imageFile)) {
-                                console.error('Error capturing video frame');
-                            }
+                            if (!result.saveToFile(QGroundControl.videoManager.imageFile1)) {
+                                console.error('Error capturing video frame 1');
+                            }                                                                                   
+                        });
+                    }
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    height: parent.height
+                    width:  1
+                    x:      parent.width * 0.33
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    height: parent.height
+                    width:  1
+                    x:      parent.width * 0.66
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    width:  parent.width
+                    height: 1
+                    y:      parent.height * 0.33
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    width:  parent.width
+                    height: 1
+                    y:      parent.height * 0.66
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+            }
+        }
+
+        Component {
+            id: videoBackgroundComponent
+            QGCVideoBackground {
+                id:             videoContent
+                objectName:     "videoContent2"
+
+                Connections {
+                    target: QGroundControl.videoManager
+                    onImageFileChanged: {
+                        videoContent.grabToImage(function(result) {
+                            if (!result.saveToFile(QGroundControl.videoManager.imageFile2)) {
+                                console.error('Error capturing video frame 2');
+                            }                                                                                   
+                        });
+                    }
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    height: parent.height
+                    width:  1
+                    x:      parent.width * 0.33
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    height: parent.height
+                    width:  1
+                    x:      parent.width * 0.66
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    width:  parent.width
+                    height: 1
+                    y:      parent.height * 0.33
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    width:  parent.width
+                    height: 1
+                    y:      parent.height * 0.66
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+            }
+        }
+
+        Component {
+            id: videoBackgroundComponent
+            QGCVideoBackground {
+                id:             videoContent
+                objectName:     "videoContent3"
+
+                Connections {
+                    target: QGroundControl.videoManager
+                    onImageFileChanged: {
+                        videoContent.grabToImage(function(result) {
+                            if (!result.saveToFile(QGroundControl.videoManager.imageFile3)) {
+                                console.error('Error capturing video frame 3');
+                            }                                                                                   
+                        });
+                    }
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    height: parent.height
+                    width:  1
+                    x:      parent.width * 0.33
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    height: parent.height
+                    width:  1
+                    x:      parent.width * 0.66
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    width:  parent.width
+                    height: 1
+                    y:      parent.height * 0.33
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+                Rectangle {
+                    color:  Qt.rgba(1,1,1,0.5)
+                    width:  parent.width
+                    height: 1
+                    y:      parent.height * 0.66
+                    visible: _showGrid && !QGroundControl.videoManager.fullScreen
+                }
+            }
+        }
+
+        Component {
+            id: videoBackgroundComponent
+            QGCVideoBackground {
+                id:             videoContent
+                objectName:     "videoContent4"
+
+                Connections {
+                    target: QGroundControl.videoManager
+                    onImageFileChanged: {
+                        videoContent.grabToImage(function(result) {
+                            if (!result.saveToFile(QGroundControl.videoManager.imageFile4)) {
+                                console.error('Error capturing video frame 4');
+                            }                                                                                   
                         });
                     }
                 }

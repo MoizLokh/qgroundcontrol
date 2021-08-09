@@ -479,6 +479,31 @@ VideoManager::imageFile()
     return _imageFile;
 }
 
+//added functions to access each separate image file
+QString
+VideoManager::imageFile1()
+{
+    return _imageFile[0];
+}
+
+QString
+VideoManager::imageFile2()
+{
+    return _imageFile[1];
+}
+
+QString
+VideoManager::imageFile3()
+{
+    return _imageFile[2];
+}
+
+QString
+VideoManager::imageFile4()
+{
+    return _imageFile[3];
+}
+
 //-----------------------------------------------------------------------------
 bool
 VideoManager::autoStreamConfigured()
